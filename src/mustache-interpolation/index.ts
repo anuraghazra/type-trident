@@ -48,3 +48,5 @@ type DoesNotExists = Interpolate<
   `My Name Is {{name}}, I'm {{wow_look_at_me}} years old`,
   { name: "Anurag"; age: "19" }
 >;
+
+export {};

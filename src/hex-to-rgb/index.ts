@@ -67,3 +67,5 @@ type HexToRgb<T> =
 type Demo1 = HexToRgb<`AFDD55`>; // 170,221,85
 type Demo2 = HexToRgb<`FF8645`>; // 255,134,69
 type Demo3 = HexToRgb<`AF4E85`>; // 175,78,133
+
+export {};

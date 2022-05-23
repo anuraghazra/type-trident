@@ -61,3 +61,5 @@ function bubbleSort(input: number[], curr: number = 0): number[] {
 }
 
 bubbleSort([234, 43, 55, 63, 5, 6, 235, 547]);
+
+export {};

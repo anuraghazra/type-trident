@@ -1,4 +1,6 @@
+// @ts-expect-error
 import React from "react";
+// @ts-expect-error
 import { FormattedMessage } from "react-intl";
 
 const messages = {
@@ -45,12 +47,12 @@ const t = (
     />
     <TypedFormattedMessage
       id="INTRO"
+      // @ts-expect-error age is missing
       values={{ name: "Anurag" }}
-      // ^ age is missing
     />
     <TypedFormattedMessage
+      // @ts-expect-error Type '"INVALID-ID"' is not assignable to type '"GREETING" | "MSG" | "HEADER"'
       id="INVALID-ID"
-      // ^ Type '"INVALID-ID"' is not assignable to type '"GREETING" | "MSG" | "HEADER"'
     />
   </>
 );

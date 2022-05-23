@@ -34,3 +34,5 @@ type Demo2 = Subtract<2, 3>;
 type Demo3 = Multiply<2, 3>;
 type Demo4 = Comparator<2, 3>;
 type Demo5 = Comparator<5, 3>;
+
+export {};

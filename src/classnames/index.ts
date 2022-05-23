@@ -100,3 +100,5 @@ const t5 = classNames({ foo: true }, { bar: true }); // => 'foo bar'
 const t6 = classNames({ foo: true, bar: true }); // => foo bar
 const t7 = classNames("foo", { bar: true, duck: false }, "baz", { quux: true }); // => 'foo bar baz quux'
 const t8 = classNames("bg", { foo: true, bar: true }); // => bg foo bar
+
+export {};
