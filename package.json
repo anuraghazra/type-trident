@@ -1,0 +1,15 @@
+{
+  "name": "type-trident",
+  "version": "1.0.0",
+  "description": "A curated list of advanced type level madness",
+  "keywords": [
+    "typescript",
+    "type-level",
+    "programming"
+  ],
+  "author": "Anurag Hazra",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
