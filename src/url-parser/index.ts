@@ -1,4 +1,4 @@
-import { Equal, Expect } from "./test-utils";
+import { Equal, Expect } from "../test-utils";
 
 type RemoveProtocol<T> = T extends `${infer _Protocol}://${infer Rest}`
   ? Rest

@@ -17,7 +17,7 @@ type HexMap = {
   F: 15;
 };
 
-type GetDec<T> = HexMap[T];
+type GetDec<T> = T extends keyof HexMap ? HexMap[T] : never;
 type Length<T extends any[]> = T["length"] & number;
 type Push<T extends any[], Val> = [...T, Val];
 type Drop<T extends any[]> = T extends [...infer R, infer End] ? R : never;
