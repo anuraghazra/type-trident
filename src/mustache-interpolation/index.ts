@@ -1,43 +1,45 @@
-type ParserError<T extends string> = { error: true } & T;
-type TrimWhiteSpace<Str extends string> = string extends Str
-  ? "Error"
-  : Str extends ` ${infer Str}` | `\n${infer Str}`
-  ? TrimWhiteSpace<Str>
-  : Str;
+declare const _brand: unique symbol;
+type Brand<Type, Name = "DefaultName"> = Type & { [_brand]: Name };
+type ParserError<T extends string> = Brand<T, "ParserError">;
 
-type StringContains<
-  Input extends string,
-  Term extends string
-> = Input extends Term
-  ? true
-  : Input extends `{{${Term}}}${infer _}`
-  ? true
-  : Input extends `${infer _0}{{${Term}}}${infer _1}`
-  ? true
-  : Input extends `${infer _}{{${Term}}}`
-  ? true
-  : false;
+type ExtractVars<
+  Str extends string,
+  Vars extends string[] = []
+> = Str extends `{{${infer Var}}}${infer Rest}`
+  ? ExtractVars<Rest, [...Vars, Var]>
+  : Str extends `${infer _0}{{${infer Var}}}${infer Rest}`
+  ? ExtractVars<Rest, [...Vars, Var]>
+  : Str extends `${infer Rest}{{${infer Var}}}`
+  ? ExtractVars<Rest, [...Vars, Var]>
+  : Vars;
 
-type CheckTypes<Str extends string, Obj extends string> = string extends Str
-  ? ParserError<"CheckTypes: parameter Str expected string">
-  : Str extends `${infer _}{{${infer Var}}}${infer Rest}`
-  ? TrimWhiteSpace<Var> extends Obj
-    ? false extends StringContains<`${_}{{${Var}}}${Rest}`, TrimWhiteSpace<Var>>
-      ? CheckTypes<`${_}${Rest}`, Exclude<Obj, TrimWhiteSpace<Var>>>
-      : CheckTypes<`${_}${Rest}`, Obj>
-    : Var
-  : true;
+type VarRecord<Str extends string> = {
+  [K in ExtractVars<Str>[number]]: string;
+};
+
+type GetMissingVars<
+  Str extends string,
+  Obj extends Record<string, string>
+> = ExtractVars<Str> extends infer Vars
+  ? Vars extends string[]
+    ? {
+        [K in Vars[number]]: unknown extends Obj[K]
+          ? `Missing var '${K}'`
+          : never;
+      }[Vars[number]]
+    : never
+  : never;
 
 type Interpolate<
   Str extends string,
-  Obj extends Record<string, string>
-> = string extends Str
-  ? ParserError<"Interpolate: parameter Str expected string">
-  : CheckTypes<Str, keyof Obj & string> extends `${infer VarNotFound}`
-  ? ParserError<`var {{${VarNotFound}}} does not exists on the given object`>
-  : Str extends `${infer Prev}{{${infer Prop}}}${infer Rest}`
-  ? `${Prev}${Obj[Prop]}${Interpolate<Rest, Obj>}`
-  : Str;
+  Obj extends VarRecord<Str>
+> = GetMissingVars<Str, Obj> extends infer MissingVars
+  ? [MissingVars] extends [never]
+    ? Str extends `${infer Prev}{{${infer Prop}}}${infer Rest}`
+      ? `${Prev}${Obj[Prop & keyof Obj]}${Interpolate<Rest, Obj>}`
+      : Str
+    : ParserError<Extract<MissingVars, string>>
+  : never;
 
 type MyString = Interpolate<
   `My Name Is {{name}}, I'm {{age}} years old`,
@@ -46,6 +48,7 @@ type MyString = Interpolate<
 
 type DoesNotExists = Interpolate<
   `My Name Is {{name}}, I'm {{wow_look_at_me}} years old`,
+  // @ts-expect-error
   { name: "Anurag"; age: "19" }
 >;
 
