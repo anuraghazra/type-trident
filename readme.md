@@ -9,7 +9,7 @@
 - [bubble-sort](./src/bubble-sort) | [playground](https://tsplay.dev/Ndo5vw) | [tweet](https://twitter.com/anuraghazru/status/1511776290487279616)  
   Type level bubble sort algorithm
 
-- [tic-tac-toe](./src/tic-tac-toe/index.ts) | tweet  
+- [tic-tac-toe](./src/tic-tac-toe/index.ts) | [playground](https://codesandbox.io/s/type-level-tic-tac-toe-yqbmk9?file=/src/index.ts:2465-2492) | [tweet](https://twitter.com/anuraghazru/status/1530866079999791105)  
   Type level tic-tac-toe game
 
 - [classnames](./src/classnames/) | [playground](https://tsplay.dev/N7OnqN) | [tweet](https://twitter.com/anuraghazru/status/1401593199148244993)  
@@ -20,7 +20,7 @@
 - [url-parser](./src/url-parser/) | [playground](https://tsplay.dev/mMMAlm) | [tweet](https://twitter.com/anuraghazru/status/1467129993402609669)  
   Type level URL parser
 
-- [math](./src/math/) | [playground](https://tsplay.dev/w65YeW) | [tweet](https://twitter.com/anuraghazru/status/1403756647240003588)    
+- [math](./src/math/) | [playground](https://tsplay.dev/w65YeW) | [tweet](https://twitter.com/anuraghazru/status/1403756647240003588)  
   Type level math operations
 
 - [mustache-interpolation](./src/mustache-interpolation/) | [playground](https://tsplay.dev/WPZXJN) | [tweet](https://twitter.com/anuraghazru/status/1311002040672219136)  
@@ -31,14 +31,14 @@
 
 - [typed-reactintl](./src/typed-reactintl/) | [playground](https://tsplay.dev/Nlv9GW) | [tweet](https://twitter.com/anuraghazru/status/1459207971838181377)  
   A type safe version of [ReactIntl](https://www.npmjs.com/package/react-intl) package
- 
+
 - [css-parser](./src/css-parser/) | [playground](https://tsplay.dev/wRRLQw) | [tweet](https://twitter.com/anuraghazru/status/1310634306092462080)  
   Very buggy type level CSS parser
 
-- [count-generic-args](./src/count-generic-args/) | [playground](https://tsplay.dev/NVZjBN) | [tweet](https://twitter.com/anuraghazru/status/1405925522102657029)   
+- [count-generic-args](./src/count-generic-args/) | [playground](https://tsplay.dev/NVZjBN) | [tweet](https://twitter.com/anuraghazru/status/1405925522102657029)  
   An interesting way of knowing if a generic argument is passed by the user or is set with default value (more info in tweet)
 
-- [tree-api](./src/tree-api/) | [playground](https://tsplay.dev/WoGBgW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)   
+- [tree-api](./src/tree-api/) | [playground](https://tsplay.dev/WoGBgW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)  
   Type safe tree api
 
 **And the most crazy one**:
@@ -46,7 +46,6 @@
 - [Type level parser](https://github.com/anuraghazra/typelevel-parser) - [Tweet](https://twitter.com/anuraghazru/status/1512092136841543682)  
   An experimental tokenizer/parser/interpreter written entirely on type-level to push the limits of TypeScript's type system.
 
-
------
+---
 
 This repository is inspired by [Type Gymnastic](https://github.com/g-plane/type-gymnastics) by g-plane.
