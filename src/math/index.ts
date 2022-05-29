@@ -35,4 +35,5 @@ type Demo3 = Multiply<2, 3>;
 type Demo4 = Comparator<2, 3>;
 type Demo5 = Comparator<5, 3>;
 
+// type Test = Add<1099123, 9901123>;
 export {};

@@ -9,6 +9,9 @@
 - [bubble-sort](./src/bubble-sort) | [playground](https://tsplay.dev/Ndo5vw) | [tweet](https://twitter.com/anuraghazru/status/1511776290487279616)  
   Type level bubble sort algorithm
 
+- [bubble-sort](./src/tic-tac-toe/index.ts) | tweet  
+  Type level tic-tac-toe game
+
 - [classnames](./src/classnames/) | [playground](https://tsplay.dev/N7OnqN) | [tweet](https://twitter.com/anuraghazru/status/1401593199148244993)  
   Type safe version of [classnames package](https://www.npmjs.com/package/classnames)
 - [hex-to-rgb](./src/hex-to-rgb/) | [playground](https://tsplay.dev/N9EvVN) | [tweet](https://twitter.com/anuraghazru/status/1464564132045152260)  
