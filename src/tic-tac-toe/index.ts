@@ -1,5 +1,4 @@
-import { BoardMap } from "./boards";
-import { M, IsNever, BoardKey, CheckWinner } from "./utils";
+import { M, IsNever, BoardKey, CheckWinner, RenderBoard } from "./utils";
 
 type Rows = 1 | 2 | 3;
 type Cols = 1 | 2 | 3;
@@ -93,16 +92,17 @@ type Game<
   boardKey: BoardKey<State["board"]>;
   ui: {
     winner: CheckWinner<State["board"]>;
-    // @ts-ignore
-    board: BoardMap[BoardKey<State["board"]>];
+    board: RenderBoard<State["board"]>;
   };
 };
 
 declare const game: Game;
 
-const g = game().p1(1, 1)
+const g = game().p1(1, 1).p2(1, 3).p1(3, 3).p2(2, 1).p1(3, 1);
 
+// hover over these to check for game state
 g.checkWinner();
 g.checkState();
 
-g.ui.board.render;
+// hover over this to render board
+g.ui.board;

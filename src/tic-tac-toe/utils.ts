@@ -87,3 +87,28 @@ export type CheckWinner<T> = T extends [
     ? "Player 2 Won"
     : "Tie"
   : never;
+
+type RenderSymbols<T> = T extends 0
+  ? "   "
+  : T extends 1
+  ? " X "
+  : T extends 2
+  ? " O "
+  : T;
+export type RenderBoard<Board extends FlattenBoardShape> = Board extends Board
+  ? {
+      1: "┌───┬───┬───┐";
+      2: `│${RenderSymbols<Board[0]>}│${RenderSymbols<
+        Board[1]
+      >}│${RenderSymbols<Board[2]>}│`;
+      3: "├───┼───┼───┤";
+      4: `│${RenderSymbols<Board[3]>}│${RenderSymbols<
+        Board[4]
+      >}│${RenderSymbols<Board[5]>}│`;
+      5: "├───┼───┼───┤";
+      6: `│${RenderSymbols<Board[6]>}│${RenderSymbols<
+        Board[7]
+      >}│${RenderSymbols<Board[8]>}│`;
+      7: "└───┴───┴───┘";
+    }
+  : never;
