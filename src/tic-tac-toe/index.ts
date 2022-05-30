@@ -1,9 +1,9 @@
-import { M, IsNever, BoardKey, CheckWinner, RenderBoard } from "./utils";
+import { M, IsNever, CheckWinner, RenderBoard } from "./utils";
 
-type Rows = 1 | 2 | 3;
-type Cols = 1 | 2 | 3;
 export type P1 = 1;
 export type P2 = 2;
+type Rows = 1 | 2 | 3;
+type Cols = 1 | 2 | 3;
 type Cell = 0 | P1 | P2;
 export type FlattenBoardShape = [
   Cell,
@@ -16,6 +16,7 @@ export type FlattenBoardShape = [
   Cell,
   Cell
 ];
+
 type Players = {
   P1: "p1";
   P2: "p2";
@@ -42,12 +43,27 @@ type InsertOnBoard<
 
 type GameState = {
   board: FlattenBoardShape;
-  previousTurn: Players[keyof Players] | null;
+  previousTurn: Players[keyof Players];
   currentRow: Rows;
   currentCol: Cols;
 };
 
 type NextState<State extends GameState> = ReturnType<Game<State>>;
+type Turn<
+  State extends GameState,
+  Player extends keyof Players
+> = State["previousTurn"] extends Players[Player]
+  ? () => `Invalid turn, it's ${Player}'s turn`
+  : <R extends Rows, C extends Cols>(
+      row: R,
+      col: C
+    ) => NextState<{
+      error: never;
+      board: InsertOnBoard<State["board"], R, C, Player extends "P1" ? 1 : 2>;
+      previousTurn: Players[Player];
+      currentRow: R;
+      currentCol: C;
+    }>;
 
 type Game<
   State extends GameState = {
@@ -57,39 +73,18 @@ type Game<
     currentCol: Cols;
   }
 > = () => {
-  p1: State["previousTurn"] extends Players["P1"]
-    ? () => "Invalid turn, it's player 2's turn"
-    : <R extends Rows, C extends Cols>(
-        row: R,
-        col: C
-      ) => NextState<{
-        board: InsertOnBoard<State["board"], R, C, 1>;
-        previousTurn: Players["P1"];
-        currentRow: R;
-        currentCol: C;
-      }>;
-  p2: State["previousTurn"] extends Players["P2"]
-    ? () => "Invalid turn, it's player 1's turn"
-    : <R extends Rows, C extends Cols>(
-        row: R,
-        col: C
-      ) => NextState<{
-        board: InsertOnBoard<State["board"], R, C, 2>;
-        previousTurn: Players["P2"];
-        currentRow: R;
-        currentCol: C;
-      }>;
+  p1: Turn<State, "P1">;
+  p2: Turn<State, "P2">;
   checkWinner: CheckWinner<State["board"]> extends infer WinState
     ? WinState extends "Tie"
       ? () => "Tie"
       : (won: "Winner winner chicken dinner") => WinState
-    : () => "Incomplete";
+    : never;
   checkState: IsNever<State["board"]> extends true
     ? `Invalid turn by ${State["previousTurn"]}, Cell ${State["currentRow"]}-${State["currentCol"]} is already taken`
     : () => State;
   state: State;
   board: State["board"];
-  boardKey: BoardKey<State["board"]>;
   ui: {
     winner: CheckWinner<State["board"]>;
     board: RenderBoard<State["board"]>;
@@ -98,7 +93,7 @@ type Game<
 
 declare const game: Game;
 
-const g = game().p1(1, 1).p2(1, 3).p1(3, 3).p2(2, 1).p1(3, 1);
+const g = game().p1(1, 1);
 
 // hover over these to check for game state
 g.checkWinner();
@@ -106,3 +101,4 @@ g.checkState();
 
 // hover over this to render board
 g.ui.board;
+g.ui.winner;

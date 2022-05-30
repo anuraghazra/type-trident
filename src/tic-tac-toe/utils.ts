@@ -26,18 +26,9 @@ export namespace M {
   > = I extends 0 ? A : MultiAdd<N, Add<N, A>, Subtract<I, 1>>;
 
   export type Multiply<A extends number, B extends number> = MultiAdd<A, 0, B>;
-
-  export type Comparator<N1 extends number, N2 extends number> = N1 extends N2
-    ? false
-    : [Subtract<N2, N1>] extends [never]
-    ? true
-    : false;
 }
 
 export type IsNever<T> = [T] extends [never] ? true : false;
-
-export type BoardKey<B extends FlattenBoardShape> =
-  `${B[0]}_${B[1]}_${B[2]}_${B[3]}_${B[4]}_${B[5]}_${B[6]}_${B[7]}_${B[8]}`;
 
 export type CheckWinner<T> = T extends [
   infer C1,
