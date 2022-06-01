@@ -30,6 +30,25 @@ export namespace M {
 
 export type IsNever<T> = [T] extends [never] ? true : false;
 
+type Repeat<
+  S extends string,
+  N extends number,
+  I extends 0[] = []
+> = I["length"] extends N ? S : `${S}${Repeat<S, N, [...I, 0]>}`;
+
+type Split<
+  Str extends string,
+  SplitBy extends string
+> = Str extends `${infer P1}${SplitBy}${infer P2}`
+  ? [P1, ...Split<P2, SplitBy>]
+  : Str extends ""
+  ? []
+  : [Str];
+
+type Some<T extends any[], C> = {
+  [K in T[number]]: T[K] extends C ? true : never;
+}[T[number]];
+
 export type CheckWinner<T> = T extends [
   infer C1,
   infer C2,
@@ -76,6 +95,8 @@ export type CheckWinner<T> = T extends [
     ? "Player 1 Won"
     : [C3, C5, C7] extends [P2, P2, P2]
     ? "Player 2 Won"
+    : Some<T, 0> extends true
+    ? "Incomplete"
     : "Tie"
   : never;
 
@@ -86,7 +107,12 @@ type RenderSymbols<T> = T extends 0
   : T extends 2
   ? " O "
   : T;
-export type RenderBoard<Board extends FlattenBoardShape> = Board extends Board
+
+export type RenderBoard<
+  Board extends FlattenBoardShape,
+  Message extends string,
+  MessageLen extends number = Split<` ${Message}`, "">["length"]
+> = Board extends Board
   ? {
       1: "┌───┬───┬───┐";
       2: `│${RenderSymbols<Board[0]>}│${RenderSymbols<
@@ -101,5 +127,8 @@ export type RenderBoard<Board extends FlattenBoardShape> = Board extends Board
         Board[7]
       >}│${RenderSymbols<Board[8]>}│`;
       7: "└───┴───┴───┘";
+      8: `┌${Repeat<"─", MessageLen>}┐`;
+      9: `│ ${Message} │`;
+      0: `└${Repeat<"─", MessageLen>}┘`;
     }
   : never;

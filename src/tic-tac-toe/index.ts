@@ -76,7 +76,9 @@ type Game<
   p1: Turn<State, "P1">;
   p2: Turn<State, "P2">;
   checkWinner: CheckWinner<State["board"]> extends infer WinState
-    ? WinState extends "Tie"
+    ? WinState extends "Incomplete"
+      ? () => "Incomplete"
+      : WinState extends "Tie"
       ? () => "Tie"
       : (won: "Winner winner chicken dinner") => WinState
     : never;
@@ -87,13 +89,13 @@ type Game<
   board: State["board"];
   ui: {
     winner: CheckWinner<State["board"]>;
-    board: RenderBoard<State["board"]>;
+    board: RenderBoard<State["board"], CheckWinner<State["board"]>>;
   };
 };
 
 declare const game: Game;
 
-const g = game().p1(1, 1);
+const g = game().p1(1, 1).p2(2, 2).p1(1, 2).p2(3, 3).p1(2, 3);
 
 // hover over these to check for game state
 g.checkWinner();
@@ -101,4 +103,3 @@ g.checkState();
 
 // hover over this to render board
 g.ui.board;
-g.ui.winner;
