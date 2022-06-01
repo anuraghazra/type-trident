@@ -46,8 +46,8 @@ type Split<
   : [Str];
 
 type Some<T extends any[], C> = {
-  [K in T[number]]: T[K] extends C ? true : never;
-}[T[number]];
+  [K in Exclude<keyof T, keyof []>]: T[K] extends C ? true : never;
+}[Exclude<keyof T, keyof []>];
 
 export type CheckWinner<T> = T extends [
   infer C1,
