@@ -42,6 +42,9 @@
 - [tree-api](./src/tree-api/) | [playground](https://tsplay.dev/WoGBgW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)  
   Type safe tree api
 
+- [typed-regex-named-groups](./src/typed-regex-named-groups) | [playground](https://tsplay.dev/wQxbAW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)  
+  Typesafe RegExp named groups
+
 **And the most crazy one**:
 
 - [Type level parser](https://github.com/anuraghazra/typelevel-parser) - [Tweet](https://twitter.com/anuraghazru/status/1512092136841543682)  
