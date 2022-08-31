@@ -42,7 +42,7 @@
 - [tree-api](./src/tree-api/) | [playground](https://tsplay.dev/WoGBgW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)  
   Type safe tree api
 
-- [typed-regex-named-groups](./src/typed-regex-named-groups) | [playground](https://tsplay.dev/wQxbAW) | [tweet](https://twitter.com/anuraghazru/status/1383476150362542085)  
+- [typed-regex-named-groups](./src/typed-regex-named-groups) | [playground](https://tsplay.dev/N5LV2w) | [tweet](https://twitter.com/anuraghazru/status/1564980027115986945)  
   Typesafe RegExp named groups
 
 **And the most crazy one**:
