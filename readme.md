@@ -15,7 +15,7 @@
 - [classnames](./src/classnames/) | [playground](https://tsplay.dev/N7OnqN) | [tweet](https://twitter.com/anuraghazru/status/1401593199148244993)  
   Type safe version of [classnames package](https://www.npmjs.com/package/classnames)
 
-- [hex-to-rgb](./src/hex-to-rgb/) | [playground](https://tsplay.dev/N9EvVN) | [tweet](https://twitter.com/anuraghazru/status/1464564132045152260)  
+- [hex-to-rgb](./src/hex-to-rgb/) | [playground](https://tsplay.dev/WPpLEW) | [tweet](https://twitter.com/anuraghazru/status/1464564132045152260)  
   Type level hex to rgb color conversion
 
 - [url-parser](./src/url-parser/) | [playground](https://tsplay.dev/mMMAlm) | [tweet](https://twitter.com/anuraghazru/status/1467129993402609669)  
