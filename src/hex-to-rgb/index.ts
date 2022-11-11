@@ -20,22 +20,13 @@ type HexMap = {
 type GetDec<T> = T extends keyof HexMap ? HexMap[T] : never;
 type Length<T extends any[]> = T["length"] & number;
 type Push<T extends any[], Val> = [...T, Val];
-type Drop<T extends any[]> = T extends [...infer R, infer End] ? R : never;
-
-type Unshift8<U extends T[], T> = [T, T, T, T, T, T, T, T, ...U];
 
 type NTuple<
   N extends number,
   T extends any[] = []
-> = N extends Partial<T>["length"]
-  ? Decrease<N, T>
-  : NTuple<N, Unshift8<T, any>>;
+> = N extends T['length'] ? T : NTuple<N, Push<T, any>>;
 
-type Decrease<N extends number, U extends any[]> = U["length"] extends N
-  ? U
-  : Decrease<N, Drop<U>>;
-
-type Add<A extends number, B extends number, C extends any[] = []> = Length<
+type Add<A extends number, B extends number> = Length<
   // @ts-ignore
   [...NTuple<A>, ...NTuple<B>]
 >;
