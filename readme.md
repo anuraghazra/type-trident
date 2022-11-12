@@ -9,6 +9,9 @@
 - [bubble-sort](./src/bubble-sort) | [playground](https://tsplay.dev/Ndo5vw) | [tweet](https://twitter.com/anuraghazru/status/1511776290487279616)  
   Type level bubble sort algorithm
 
+- [insertion-sort](./src/insertion-sort) | [playground](https://tsplay.dev/w17dOm) | [tweet](https://twitter.com/anuraghazru/status/1591448028640317440)  
+  Type level insertion sort algorithm
+
 - [tic-tac-toe](./src/tic-tac-toe/index.ts) | [playground](https://codesandbox.io/s/type-level-tic-tac-toe-yqbmk9?file=/src/index.ts:2465-2492) | [tweet](https://twitter.com/anuraghazru/status/1530866079999791105)  
   Type level tic-tac-toe game
 
