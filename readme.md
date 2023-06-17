@@ -48,6 +48,12 @@
 - [typed-regex-named-groups](./src/typed-regex-named-groups) | [playground](https://tsplay.dev/N5LV2w) | [tweet](https://twitter.com/anuraghazru/status/1564980027115986945)  
   Typesafe RegExp named groups
 
+- [string-to-number](./src/string-to-number) | [playground](https://tsplay.dev/Nr9Law) | [tweet](https://twitter.com/anuraghazru/status/1573328090884980739)  
+  String to number conversion (with floating number supports)
+
+- [Number Range type](./src/range-type) | [playground](https://tsplay.dev/N95d8N) | [tweet](https://twitter.com/anuraghazru/status/1573328100246822917)  
+  Range type which generates union of number between two numbers (with floating number supports)
+
 **And the most crazy one**:
 
 - [Type level parser](https://github.com/anuraghazra/typelevel-parser) - [Tweet](https://twitter.com/anuraghazru/status/1512092136841543682)  
