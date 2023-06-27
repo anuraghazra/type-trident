@@ -54,6 +54,11 @@
 - [Number Range type](./src/range-type) | [playground](https://tsplay.dev/N95d8N) | [tweet](https://twitter.com/anuraghazru/status/1573328100246822917)  
   Range type which generates union of number between two numbers (with floating number supports)
 
+**Leetcode challenges**
+
+- [Leetcode 1209](./src/leetcode/remove-all-adjacent-duplicates-in-string-2.ts) | [playground](https://tsplay.dev/NDgkxw) | [tweet](https://twitter.com/anuraghazru/status/1673736137373020161)  
+  Remove All Adjacent Duplicates in String II 
+  
 **And the most crazy one**:
 
 - [Type level parser](https://github.com/anuraghazra/typelevel-parser) - [Tweet](https://twitter.com/anuraghazru/status/1512092136841543682)  
