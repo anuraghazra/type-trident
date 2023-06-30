@@ -58,6 +58,8 @@
 
 - [Leetcode 1209](./src/leetcode/remove-all-adjacent-duplicates-in-string-2.ts) | [playground](https://tsplay.dev/NDgkxw) | [tweet](https://twitter.com/anuraghazru/status/1673736137373020161)  
   Remove All Adjacent Duplicates in String II 
+- [Leetcode 12](./src/leetcode/roman-to-int.ts) | [playground](https://tsplay.dev/Ndarvm) | [tweet](https://twitter.com/anuraghazru/status/1674816392225488896)  
+  Roman to Integer
   
 **And the most crazy one**:
 
