@@ -37,3 +37,4 @@ type Demo5 = Comparator<5, 3>;
 
 // type Test = Add<1099123, 9901123>;
 export {};
+export * from "./big-num";
